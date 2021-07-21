@@ -22,18 +22,15 @@ jobs:
 
       - name: Install
         run: |
-          cd module-streamlabs
           yarn cache clean
           yarn install --network-timeout 1000000
 
       - name: Build
-        run: |
-          cd module-streamlabs
-          yarn build
+        run: yarn build
 
       - name: Compress
         run: |
-          cd module-streamlabs/dist
+          cd ./dist
           npx bestzip ../module-streamlabs.zip ./*
 
       - name: Upload
@@ -43,5 +40,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           host: ${{ secrets.FTP_HOST }}
           port: ${{ secrets.FTP_PORT }}
-          src: ./module-streamlabs/module-streamlabs.zip
+          src: ./module-streamlabs.zip
           dest: ./builds/${{ github.sha }}/modules/module-streamlabs.zip

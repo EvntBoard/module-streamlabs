@@ -1,5 +1,5 @@
 {
-  "name": "evntboard-plugin-streamlabs",
+  "name": "module-streamlabs",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/index.js",

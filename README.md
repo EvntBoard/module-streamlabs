@@ -1,7 +1,5 @@
 # StreamLabs for EvntBoard
 
-⚠️ Doesn't work at the moment...
-
 ## Config
 
 ```json5

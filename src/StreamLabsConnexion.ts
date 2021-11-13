@@ -26,7 +26,9 @@ export class StreamLabsConnexion {
       events: [EStreamLabsEvent.OPEN, EStreamLabsEvent.CLOSE],
     });
 
-    this.evntCom.onEvent = (data: any): void => {
+    this.evntCom.on('open', this.load);
+
+    this.evntCom.on('event', (data: any): void => {
       if (data?.emitter !== config.name) return;
       switch (data?.event) {
         case EStreamLabsEvent.OPEN:
@@ -38,9 +40,9 @@ export class StreamLabsConnexion {
         default:
           break;
       }
-    };
+    });
 
-    this.evntCom.onOpen = this.load.bind(this);
+    this.evntCom.connect();
   }
 
   load = async () => {
